@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Medicamento a Sucursal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center mt-4">Agregar Medicamento</h2>
+    <form th:action="@{/medicamentosucursal/guardar}" th:object="${medicamentoSucursal}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <input type="hidden" th:field="*{sucursal_id.id}" /> <!-- MUY IMPORTANTE -->
+
+    <div class="form-group">
+        <label>Medicamento:</label>
+        <select th:field="*{medicamento_id.id}" class="form-control">
+    <option th:each="med : ${listaMedicamentos}"
+            th:value="${med.id}"
+            th:text="${med.nombre}">Selecciona un medicamento</option>
+</select>
+    </div>
+
+    <div class="form-group">
+        <label>Cantidad:</label>
+        <input type="number" th:field="*{cantidad}" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+</div>
+</body>
+</html>

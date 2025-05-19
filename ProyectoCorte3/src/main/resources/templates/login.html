@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .login-header img {
+            width: 80px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Encabezado -->
+        <div class="login-header">
+            <h2 class="h4">Iniciar Sesión</h2>
+            <p class="text-muted">Ingresa tus credenciales para continuar</p>
+        </div>
+
+        <!-- Formulario -->
+        <form th:action="@{/login}" method="post">
+            <!-- Campo Usuario -->
+            <div class="mb-3">
+                <label for="username" class="form-label">Usuario</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="username" 
+                    name="username" 
+                    placeholder="Ej: admin" 
+                    required
+                >
+            </div>
+
+            <!-- Campo Contraseña -->
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input 
+                    type="password" 
+                    class="form-control" 
+                    id="password" 
+                    name="password" 
+                    placeholder="••••••••" 
+                    required
+                >
+            </div>
+
+            <!-- Botón Submit -->
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">
+                    Ingresar
+                </button>
+            </div>
+
+            <!-- Mensaje de error -->
+            <div th:if="${param.error}" class="alert alert-danger mt-3">
+                <i class="bi bi-exclamation-circle"></i> Usuario o contraseña incorrectos
+            </div>
+        </form>
+
+        <!-- Pie de página -->
+        <div class="text-center mt-3">
+            <a href="#" class="text-decoration-none">¿Olvidaste tu contraseña?</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap Icons (opcional) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Bootstrap JS Bundle (opcional, solo si necesitas funcionalidades JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
