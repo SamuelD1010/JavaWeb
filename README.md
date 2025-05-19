@@ -5,4 +5,4 @@ Al iniciar el código en STS, entrar al navegador bajo "localhost/8090", credenc
 Usuario: samuel
 Contraseña: contra
 
-La base de datos a cargar es el archivo SQL "proyectocorte3".
+La base de datos a cargar es el archivo "proyectocorte3".
